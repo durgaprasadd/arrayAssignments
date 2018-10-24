@@ -1,5 +1,5 @@
 let assert = require("assert");
-let lib = require("./library.js");
+let lib = require("./array_library.js");
 let extractDigits = lib.extractDigits;
 let uniqueOfArray = lib.findUniqueOfArray;
 let unionOfArray = lib.unionOfArray;
@@ -117,7 +117,7 @@ assert.deepEqual(checkIsAscend([1,2,3,4,3]),false);
 assert.deepEqual(checkIsAscend([1,2,3,4,10]),true);
 
 //--------------checkIsDescend------------
-assert.deepEqual(checkIsDescend([]),false);
+assert.deepEqual(checkIsDescend([]),true);
 assert.deepEqual(checkIsDescend([3,2,1]),true);
 assert.deepEqual(checkIsDescend([2,1]),true);
 assert.deepEqual(checkIsDescend([1,2,3,4,5]),false);

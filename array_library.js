@@ -129,22 +129,20 @@ const countBelowThreshold = function(list,thresholdValue){
 }
 
 //----------check is ascend--------------
-const isAscend = function(state,element){
-  if(state.elements>element){
-    state.isAscend = false;
-    return state;
-  }
-  state.elements = element;
+const checkOrder = function(state,element){
+  state.isAscend = (state.prevElement <= element && state.isAscend);
+  state.isDescend = (state.prevElement >= element && state.isDescend);
+  state.prevElement = element;
   return state;
 }
 
 const checkIsAscend = function(list){
-  return list.reduce(isAscend,{isAscend:true,elements:list[0]}).isAscend;
+  return list.reduce(checkOrder,{isAscend:true,isDescend:true,prevElement:list[0]}).isAscend;
 }
 
 //----------check is descend-----------
 checkIsDescend = function(list){
-  return !checkIsAscend(list);
+  return list.reduce(checkOrder,{isAscend:true,isDescend:true,prevElement:list[0]}).isDescend;
 }
 
 //-------extract--Digits-----------
